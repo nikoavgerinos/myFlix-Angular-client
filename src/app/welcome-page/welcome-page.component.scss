@@ -55,7 +55,7 @@ html, body {
   $emoji-total: 10;
   
   @for $i from 1 through $emoji-total {
-    $animation-delay: random(4) + 1s;
+    $animation-delay: random(2) + 1s;
     $animation-duration: random(15) + 3s;
     $scale: random(2) - .4;
   
@@ -98,21 +98,33 @@ html, body {
     overflow-y: hidden ;
   }
   
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
   h1 {
-    font-family: 'Anton', 'Fjalla One', sans-serif; /* Use the imported 3D font first */
-    font-size: 3rem; /* Increase font size for emphasis */
-    text-transform: uppercase; /* Netflix-style uppercase */
+    font-family: 'Anton', sans-serif;
+    font-size: 3rem;
+    text-transform: uppercase;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add a subtle text shadow for depth */
-}
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    animation: fadeIn 1s ease-in-out forwards; /* Apply the fadeIn animation */
+  }
   
   button {
     margin-top: 10px;
     font-family: 'Anton', 'Fjalla One', sans-serif;
+    opacity: 0; /* Initially set opacity to 0 */
+    animation: fadeIn 1s ease-in-out forwards; /* Apply the fadeIn animation */
+    animation-delay: 0.5s; /* Delay the button animation by 0.5 seconds */
   }
   
   button.primary {
     background-color: #007bff;
     color: #fff;
   }
-  
