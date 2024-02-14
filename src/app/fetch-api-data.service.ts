@@ -6,7 +6,7 @@ import { catchError, map } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 
 //Declaring the api url that will provide data for the client app
-const apiUrl = 'YOUR_HOSTED_API_URL_HERE/';
+const apiUrl = 'https://movieapionrender.onrender.com/';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +18,7 @@ export class FetchApiDataService {
   // USER REGISTRATION - Making the api call for the user registration endpoint
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
-    return this.http.post(apiUrl + 'register', userDetails).pipe(
+    return this.http.post(apiUrl + 'users', userDetails).pipe(
     catchError(this.handleError)
     );
   }
