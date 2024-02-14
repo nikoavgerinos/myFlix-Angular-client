@@ -1,0 +1,45 @@
+mat-card {
+    width: 100%;
+    margin: auto;
+    padding: 0;
+    margin-top: 50px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  
+    // Adjust card header styles
+    mat-card-header {
+      text-align: center !important;
+      padding-left: 90px;
+      padding-bottom: 30px;
+      font-weight: bold;
+      font-size: large;
+    
+    }
+  
+    // Adjust form field styles
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 15px;
+  
+      input {
+        width: calc(100% - 24px); // Adjust as needed
+      }
+  
+      mat-icon {
+        margin-right: 8px; // Adjust as needed
+        color: rgba(0, 0, 0, 0.54); // Adjust icon color
+      }
+    }
+  
+    // Adjust card actions styles
+    mat-card-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+  
+      button {
+        width: 100%;
+      }
+    }
+  }
