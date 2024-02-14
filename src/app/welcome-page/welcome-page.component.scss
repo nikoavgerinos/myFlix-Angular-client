@@ -117,11 +117,16 @@ html, body {
   }
   
   button {
-    margin-top: 10px;
+    margin: 30px;
     font-family: 'Anton', 'Fjalla One', sans-serif;
     opacity: 0; /* Initially set opacity to 0 */
     animation: fadeIn 1s ease-in-out forwards; /* Apply the fadeIn animation */
     animation-delay: 0.5s; /* Delay the button animation by 0.5 seconds */
+    transform: scale(1.1);
+  }
+
+  button:hover {
+    transform: scale(1.3);
   }
   
   button.primary {

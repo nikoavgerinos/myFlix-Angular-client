@@ -12,8 +12,9 @@ mat-card {
       text-align: center !important;
       padding-left: 90px;
       padding-bottom: 30px;
-      font-weight: bold;
-      font-size: large;
+      
+      font-size: 25px;
+      font-family: 'Anton', 'Fjalla One', sans-serif;
     
     }
   
@@ -40,6 +41,12 @@ mat-card {
   
       button {
         width: 100%;
+        font-family: 'Anton', 'Fjalla One', sans-serif;
       }
+
+      button:hover {
+        transform: scale(1.1);
+      }
+      
     }
   }
