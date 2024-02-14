@@ -1,30 +1,118 @@
-.main-page {
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+html, body {
+    html, body {
+        overflow-x: hidden ;
+        overflow-y: hidden ;
+        ; /* Disable vertical scrolling */
+
+      }
+      
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .gradient {
+    --size: 900px;
+    --speed: 30s;
+    --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
+  
+    width: var(--size);
+    height: var(--size);
+    filter: blur(calc(var(--size) / 5));
+    background-image: linear-gradient(hsl(158, 82, 57, 85%), hsl(252, 82, 57));
+    animation: rotate var(--speed) var(--easing) alternate infinite;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 1000;
+    inset: 0;
+    z-index: -1;
+  }
+  
+  .emojis {
+    position: absolute;
+    bottom: -50px; /* Set the initial position to be off-screen */
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+    text-align: center;
+    line-height: 50px;
+    transform-style: preserve-3d;
+    opacity: 0; /* Initially set opacity to 0 */
+    border: 1px solid transparent; /* Added border to prevent triggering scrollbar */
+    animation: fadeIn 1s ease-in-out forwards; /* Apply the fadeIn animation */
+  }
+  
+  $emoji-total: 10;
+  
+  @for $i from 1 through $emoji-total {
+    $animation-delay: random(4) + 1s;
+    $animation-duration: random(15) + 3s;
+    $scale: random(2) - .4;
+  
+    .emojis:nth-child(#{$i}) {
+      left: random(120) * 1% - 20;
+      animation: raise#{$i} $animation-duration linear infinite;
+      animation-delay: $animation-delay;
+      transform: scale($scale) rotate(random(360) + deg);
+      z-index: $i - 7;
+  
+      @keyframes raise#{$i} {
+        from {
+          bottom: -50px;
+          opacity: 0;
+        }
+        to {
+          bottom: 100vh; /* Adjusted endpoint */
+          opacity: 1;
+          transform: scale($scale) rotate(random(360) + deg);
+        }
+      }
+      
+    }
+  }
+  
+  
+  .main-page {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f0f0f0; /* Set a background color of your choice */
+    color: #f4ebeb;
+    position: relative;
+    z-index: 1;
+    background-color: #222;
+    text-align: center;
+    height: 100vh !important;
+    overflow-x: hidden ;
+    overflow-y: hidden ;
+  }
   
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #333; /* Set text color */
-    }
+  h1 {
+    font-family: 'Anton', 'Fjalla One', sans-serif; /* Use the imported 3D font first */
+    font-size: 3rem; /* Increase font size for emphasis */
+    text-transform: uppercase; /* Netflix-style uppercase */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add a subtle text shadow for depth */
+}
   
-    .button-container {
-      display: flex;
-      gap: 10px; /* Adjust the gap between buttons */
-      margin-top: 10px;
-    }
+  button {
+    margin-top: 10px;
+    font-family: 'Anton', 'Fjalla One', sans-serif;
+  }
   
-    button {
-      margin-top: 10px;
-    }
-  
-    button.primary {
-      background-color: #007bff; /* Set primary button background color */
-      color: #fff; /* Set primary button text color */
-    }
+  button.primary {
+    background-color: #007bff;
+    color: #fff;
   }
   

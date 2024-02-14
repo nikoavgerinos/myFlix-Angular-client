@@ -12,6 +12,12 @@
       color: #333; /* Set text color */
     }
   
+    .button-container {
+      display: flex;
+      gap: 10px; /* Adjust the gap between buttons */
+      margin-top: 10px;
+    }
+  
     button {
       margin-top: 10px;
     }
