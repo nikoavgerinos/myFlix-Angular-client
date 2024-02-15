@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -18,10 +19,16 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { ProfileComponent } from './profile-page/profile-page.component';
+
+import { NavbarComponent } from './navbar/navbar.component';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: ProfileComponent},
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -32,6 +39,8 @@ const appRoutes: Routes = [
     UserLoginFormComponent,
     MovieCardComponent,
     WelcomePageComponent,
+    ProfileComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +57,7 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatSnackBarModule,
     MatIconModule,
+    MatMenuModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [],
