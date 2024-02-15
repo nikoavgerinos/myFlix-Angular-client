@@ -1,53 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900');
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #222;
+  padding: 2rem;
+}
+
+.title {
+  color: #fff;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-family: 'Anton', sans-serif !important;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  animation: fadeIn 1s ease-in-out forwards; /* Apply the fadeIn animation */
+}
+
+
 .movie-container {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin: 10px 0;
+  background: linear-gradient(158deg, hsl(158, 82%, 57%), hsl(252, 82%, 57%));
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 40px;
+  transition: transform 0.3s ease-out;
+  transform-origin: center center;
+}
+
+
+
+.movie-card-top {
+  padding: 10px;
+}
+
+.movie-card-title {
+  margin-bottom: 10px;
+  font-weight: bold;
+
+
+}
+
+.movie-card-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.mat-card-content {
+  padding: 10px;
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px 10px 10px;
+  color: white !important; ;
+}
+
+.mat-icon {
+  padding-left: 20px;
+  color: #222;
+}
+
+.mat-mdc-button.mat-primary {
+color: white;
+font-family: 'Anton', sans-serif !important;
+}
+@media (max-width: 1200px) {
+  .movie-container {
     justify-content: center;
   }
-  
-  mat-card {
-    width: 300px;
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
+
+  .movie-card {
+    width: 33.33%;
   }
-  
-  mat-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .movie-card {
+    width: 50%;
   }
-  
-  mat-card-title {
-    font-size: 24px;
-    text-align: center;
-    flex-grow: 1;
-    white-space: normal;
-  }
-  
-  mat-card-subtitle {
-    font-size: 18px;
-  }
-  
-  mat-card-image {
+}
+
+@media (max-width: 600px) {
+  .movie-card {
     width: 100%;
-    height: 150px;
-    object-fit: cover;
-    flex-shrink: 0;
   }
-  
-  mat-card-content {
-    padding: 10px;
-    flex-grow: 1;
-  }
-  
-  mat-card-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-shrink: 0;
-  }
-  
-  mat-icon {
-    font-size: 24px;
-  }
+}
