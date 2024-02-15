@@ -1,9 +1,8 @@
-<app-navbar></app-navbar>
-<mat-card class="profile">
-  <mat-card-title>Profile</mat-card-title>
-  <mat-card-content>
-    Username: {{ user.Username }} <br />
-    Email: {{ user.Email }} <br />
-    Birthday: {{ user.Birthday | date : "mediumDate" }} <br />
-  </mat-card-content>
-</mat-card>
+<mat-card-content>
+  Username: {{ user.Username }} <br />
+  Email: {{ user.Email }} <br />
+  Birthday: {{ user.Birthday | date : "mediumDate" }} <br />
+
+  <button mat-button color="warn" (click)="deleteUser()">Delete User</button>
+  <button mat-button (click)="openUpdateUserForm()">Update Profile</button>
+</mat-card-content>

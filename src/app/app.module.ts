@@ -23,6 +23,7 @@ import { ProfileComponent } from './profile-page/profile-page.component';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { UserUpdateFormComponent } from './user-update-form/user-update-form.component';
 
 
 const appRoutes: Routes = [
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     ProfileComponent,
     NavbarComponent,
+    UserUpdateFormComponent,
   ],
   imports: [
     BrowserModule,

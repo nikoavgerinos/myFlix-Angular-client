@@ -1,0 +1,61 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Update User</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form>
+      <mat-form-field>
+        <mat-icon matPrefix>account_circle</mat-icon>
+        <input
+          matInput
+          [(ngModel)]="updatedUser.Username"
+          placeholder="Username"
+          type="text"
+          name="username"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-icon matPrefix>email</mat-icon>
+        <input
+          matInput
+          [(ngModel)]="updatedUser.Email"
+          placeholder="Email"
+          type="email"
+          name="email"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-icon matPrefix>calendar_today</mat-icon>
+        <input
+          matInput
+          [(ngModel)]="updatedUser.Birthday"
+          placeholder="Birthday"
+          type="date"
+          name="birthday"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-icon matPrefix>lock</mat-icon>
+        <input
+          matInput
+          [(ngModel)]="updatedUser.Password"
+          placeholder="New Password"
+          type="password"
+          name="password"
+        />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="onCancel()" color="warn">Cancel</button>
+    <button mat-raised-button (click)="onUpdateUser()" color="primary">
+      Update User
+    </button>
+  </mat-card-actions>
+</mat-card>
