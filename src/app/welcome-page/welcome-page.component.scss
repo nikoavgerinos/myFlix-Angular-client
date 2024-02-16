@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Anton'), local('Anton-Regular'), url(https://fonts.googleapis.com/css2?family=Anton&display=swap) format('woff2');
+}
 
 html, body {
     html, body {
