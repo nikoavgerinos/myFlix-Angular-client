@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-navbar',
@@ -8,41 +9,32 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(
+    public router: Router,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
   }
 
-   /**
-   * navbar element to navigate home page
-   */
-  // public openMovieList(): void{
-  //   this.router.navigate(['movies']);
-  // }
-  /**
-   * navbar element to navigate profile page
-   */
   public openProfile(): void {
     this.router.navigate(['profile']);
   }
 
   public openMovies(): void {
-    // Navigate to the Movies component or perform other actions
     this.router.navigate(['movies']);
   }
 
-  public openWelcome(): void {
-    // Navigate to the Welcome component or perform other actions
+  public logout(): void {
+    // Clear user session or token (replace with your authentication logic)
+    localStorage.removeItem('userToken'); // Example: assuming you store a token in localStorage
+
+    // Show snackbar notification
+    this.snackBar.open('Logout successful', 'Close', {
+      duration: 2000, verticalPosition: 'top'
+    });
+
+    // Redirect to the welcome page after logout
     this.router.navigate(['welcome']);
   }
-  /**
-   * navbar element to logout the current user and navigate to welcome page
-   */
-  // public logoutUser(): void {
-  //   localStorage.setItem('token', '');
-  //   localStorage.setItem('user', '');
-  //   this.router.navigate(['welcome']);
-  // }
-
-
 }

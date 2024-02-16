@@ -1,54 +1,67 @@
-<!-- profile-page.component.html -->
-
 <app-navbar></app-navbar>
-
-<div class="container">
-  <h1 class="title">User Profile</h1>
-
-  <div class="profile-info">
-    <mat-card-content>
-      Username: {{ user.Username }} <br />
-      Email: {{ user.Email }} <br />
-      Birthday: {{ user.Birthday | date : "mediumDate" }} <br />
-      <div class="button-container">
-        <button
-          mat-raised-button
-          class="update-button"
-          (click)="openUpdateUserForm()"
-          color="primary"
-        >
-          Update
-        </button>
-        <button
-          mat-raised-button
-          class="delete-button"
-          color="warn"
-          (click)="deleteUser()"
-        >
-          Delete User
-        </button>
+<div class="movie-page profile-page">
+  <mat-card class="profile">
+    <mat-card-title class="info">
+      <div class="profile-picture">
+        <img
+          src="https://excellence.truman.edu/files/2022/02/Photo-Placeholder-Image-150x150-1.jpg"
+          alt="Profile Picture"
+        />
       </div>
-    </mat-card-content>
-  </div>
-
+      <div class="info-text">
+        <h2>PROFILE</h2>
+        Username: {{ user.Username }} <br />
+        Email: {{ user.Email }} <br />
+        Birthday: {{ user.Birthday | date : "longDate" }}<br />
+      </div>
+    </mat-card-title>
+    <mat-card-content></mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        (click)="openUpdateUserForm()"
+        color="primary"
+        style="margin: 20px"
+      >
+        Update User
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="deleteUser()"
+        style="margin: 20px"
+      >
+        Delete Account
+      </button>
+    </mat-card-actions>
+  </mat-card>
   <div class="favorite-movies">
     <h2 class="subtitle">Favorite Movies</h2>
 
-    <div class="movie-container">
-      <mat-card *ngFor="let movie of favouriteMovies" class="movie-card">
-        <!-- Display favorite movies -->
-        <mat-card-title>{{ movie.Title }}</mat-card-title>
-        <mat-card-subtitle
-          >Directed by: {{ movie.Director.Name }}</mat-card-subtitle
-        >
+    <ng-container *ngIf="FavoriteMovies.length === 0; else movieContainer">
+      <div class="movie-container">
+        <mat-card class="no-favorites-message"> No movies found... </mat-card>
+      </div>
+    </ng-container>
 
-        <!-- Other details -->
-        <mat-card-actions>
-          <mat-icon (click)="removeFromFavorites(movie._id)" color="warn"
-            >delete</mat-icon
-          >
-        </mat-card-actions>
-      </mat-card>
-    </div>
+    <ng-template #movieContainer>
+      <div class="movie-container">
+        <mat-card class="movie-card" *ngFor="let movie of FavoriteMovies">
+          <!-- Display favorite movies -->
+          <img mat-card-image [src]="movie.ImagePath" [alt]="movie.Title" />
+          <mat-card-title class="movie-card-title">{{
+            movie.Title
+          }}</mat-card-title>
+          <mat-card-subtitle class="movie-card-subtitle">
+            Directed by: {{ movie.Director.Name }}
+          </mat-card-subtitle>
+          <mat-card-actions>
+            <mat-icon (click)="removeFromFavorites(movie._id)" color="warn"
+              >delete</mat-icon
+            >
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </ng-template>
   </div>
 </div>

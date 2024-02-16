@@ -1,8 +1,14 @@
 <div class="navigation-bar">
   <h1>myFlix</h1>
   <div class="nav-links">
-    <button mat-button (click)="openWelcome()">Welcome</button>
-    <button mat-button (click)="openMovies()">Movies</button>
-    <button mat-button (click)="openProfile()">Profile</button>
+    <button mat-button (click)="openMovies()">
+      <mat-icon class="icon">movie</mat-icon>
+    </button>
+    <button mat-button (click)="openProfile()">
+      <mat-icon class="icon">person</mat-icon>
+    </button>
+    <button mat-button (click)="logout()">
+      <mat-icon class="icon" color="warn">exit_to_app</mat-icon>
+    </button>
   </div>
 </div>

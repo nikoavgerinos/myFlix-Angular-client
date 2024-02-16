@@ -3,7 +3,7 @@
     <mat-card-title>Update User</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form>
+    <form #userForm="ngForm">
       <mat-form-field>
         <mat-icon matPrefix>account_circle</mat-icon>
         <input
@@ -37,7 +37,6 @@
           type="date"
           name="birthday"
           required
-          autocomplete=" new-password"
         />
       </mat-form-field>
 
@@ -45,7 +44,7 @@
         <mat-icon matPrefix>lock</mat-icon>
         <input
           matInput
-          [(ngModel)]="updatedUser.Password"
+          [(ngModel)]="newPassword"
           placeholder="New Password"
           type="password"
           name="password"
@@ -54,8 +53,16 @@
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button (click)="onCancel()" color="warn">Cancel</button>
-    <button mat-raised-button (click)="onUpdateUser()" color="primary">
+    <button mat-raised-button (click)="onCancel()" color="warn" disableRipple>
+      Cancel
+    </button>
+    <button
+      mat-raised-button
+      (click)="onUpdateUser()"
+      color="primary"
+      disableRipple
+      [disabled]="!userForm.valid"
+    >
       Update User
     </button>
   </mat-card-actions>

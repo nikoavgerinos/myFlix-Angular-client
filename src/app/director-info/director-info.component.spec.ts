@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavbarComponent } from './navbar.component';
+import { DirectorInfoComponent } from './director-info.component';
 
-describe('NavbarComponent', () => {
-  let component: NavbarComponent;
-  let fixture: ComponentFixture<NavbarComponent>;
+describe('DirectorInfoComponent', () => {
+  let component: DirectorInfoComponent;
+  let fixture: ComponentFixture<DirectorInfoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NavbarComponent]
+      declarations: [DirectorInfoComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(NavbarComponent);
+    fixture = TestBed.createComponent(DirectorInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -20,7 +20,4 @@ describe('NavbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  
 });
-

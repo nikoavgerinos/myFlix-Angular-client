@@ -25,6 +25,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { UserUpdateFormComponent } from './user-update-form/user-update-form.component';
 import { DeleteConfirmDialogComponent } from './delete-confirm-dialog/delete-confirm-dialog.component';
+import { GenreInfoComponent } from './genre-info/genre-info.component';
+import { DirectorInfoComponent } from './director-info/director-info.component';
+import { MovieSynopsisComponent } from './movie-synopsis/movie-synopsis.component';
 
 
 const appRoutes: Routes = [
@@ -45,6 +48,9 @@ const appRoutes: Routes = [
     NavbarComponent,
     UserUpdateFormComponent,
     DeleteConfirmDialogComponent,
+    GenreInfoComponent,
+    DirectorInfoComponent,
+    MovieSynopsisComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { GenreInfoComponent } from '../genre-info/genre-info.component';
+import { MatDialog } from '@angular/material/dialog';
+import { DirectorInfoComponent } from '../director-info/director-info.component';
+import { MovieSynopsisComponent } from '../movie-synopsis/movie-synopsis.component';
+
 
 @Component({
   selector: 'app-movie-card',
@@ -10,7 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class MovieCardComponent {
   movies: any[] = [];
 
-  constructor(public fetchApiData: FetchApiDataService, private snackBar: MatSnackBar) { }
+  constructor(public fetchApiData: FetchApiDataService, public snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getMovies();
@@ -21,6 +26,37 @@ export class MovieCardComponent {
       this.movies = resp;
     });
   }
+  openGenreDialog(name: string, description: string): void {
+    this.dialog.open(GenreInfoComponent, {
+      data: {
+        Name: name,
+        Description: description,
+      },
+      width: '450px',
+    });
+  }
+
+  openDirectorDialog(name: string, bio: string, birth: string, death: string): void {
+    this.dialog.open(DirectorInfoComponent, {
+      data: {
+        Name: name,
+        Bio: bio,
+        Birth: birth,
+        Death: death
+      },
+      width: '450px',
+    });
+  }
+  openSynopsisDialog(description: string): void {
+    this.dialog.open(MovieSynopsisComponent, {
+      data: {
+        Description: description,
+      },
+      width: '450px',
+    });
+  }
+
+  
 
   toggleFavorite(movieId: string): void {
     const isCurrentlyFavorite = this.fetchApiData.isFavoriteMovie(movieId);
@@ -35,6 +71,8 @@ export class MovieCardComponent {
       });
     }
   }
+
+  
 
   isFavorite(movieId: string): boolean {
     return this.fetchApiData.isFavoriteMovie(movieId);

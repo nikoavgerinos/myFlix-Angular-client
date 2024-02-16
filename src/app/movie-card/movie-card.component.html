@@ -9,31 +9,38 @@
           alt="{{ movie.Title }}"
         />
         <mat-card-actions class="actions">
-          <!-- <button
-                    mat-button
-                    color="primary"
-                    (click)="openSynopsisDialog(movie.Description)"
-                >
-                    Synopsis
-                </button> -->
-          <!-- <button
-                    mat-button
-                    color="primary"
-                    (click)="openGenreDialog(movie.Genre.Name, movie.Genre.Description)"
-                >
-                    Genre
-                </button> -->
-          <!-- <button
-                    mat-button
-                    color="primary"
-                    (click)="openDirectorDialog(movie.Director.Name, movie.Director.Bio,movie.Director.Birth,movie.Director.Death)"
-                >
-                    Director
-                </button> -->
+          <button
+            mat-button
+            color="primary"
+            (click)="openSynopsisDialog(movie.Description)"
+          >
+            Synopsis
+          </button>
+          <button
+            mat-button
+            color="primary"
+            (click)="openGenreDialog(movie.Genre.Name, movie.Genre.Description)"
+          >
+            Genre
+          </button>
+          <button
+            mat-button
+            color="primary"
+            (click)="
+              openDirectorDialog(
+                movie.Director.Name,
+                movie.Director.Bio,
+                movie.Director.Birth,
+                movie.Director.Death
+              )
+            "
+          >
+            Director
+          </button>
           <mat-icon
             class="fav-icon"
             (click)="toggleFavorite(movie._id)"
-            [color]="isFavorite(movie._id) ? 'warn' : 'primary'"
+            [color]="isFavorite(movie._id) ? 'warn' : 'accent'"
           >
             {{ isFavorite(movie._id) ? "favorite" : "favorite_border" }}
           </mat-icon>

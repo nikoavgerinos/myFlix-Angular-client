@@ -1,5 +1,8 @@
-import { Component, Inject, OnInit, HostListener } from '@angular/core';
+// user-update-form.component.ts
+
+import { Component, Inject, OnInit, HostListener, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NgForm } from '@angular/forms';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -11,7 +14,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class UserUpdateFormComponent implements OnInit {
 
   updatedUser: any;
-  newPassword: string = ""; // Separate variable to hold the new password
+  newPassword: string = "";
+  @ViewChild('userForm') userForm!: NgForm;
 
   constructor(
     public dialogRef: MatDialogRef<UserUpdateFormComponent>,
@@ -21,14 +25,18 @@ export class UserUpdateFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Initialize the updatedUser object with the current user data
     this.updatedUser = { ...this.data };
   }
 
   onUpdateUser(): void {
-    // Set the new password to the updatedUser object before calling the API
-    this.updatedUser.Password = this.newPassword;
-
+    // Set the new password to the updatedUser object only if a new password is entered
+    if (this.newPassword.trim() !== "") {
+      this.updatedUser.Password = this.newPassword;
+    } else {
+      // If no new password is entered, remove the Password property from updatedUser
+      delete this.updatedUser.Password;
+    }
+  
     // Call your API service method to update the user
     this.fetchApiData.editUser(this.updatedUser).subscribe(
       (result) => {
@@ -50,7 +58,6 @@ export class UserUpdateFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  // Listen for the keyup event on the document
   @HostListener('document:keyup', ['$event'])
   handleKeyUp(event: KeyboardEvent): void {
     // Check if the Enter key is pressed (keyCode 13)
