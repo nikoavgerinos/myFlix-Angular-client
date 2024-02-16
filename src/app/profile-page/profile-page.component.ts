@@ -1,9 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+// profile-page.component.ts
+
+import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
-import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { UserUpdateFormComponent } from '../user-update-form/user-update-form.component'; // Import the UserUpdateFormComponent
+import { UserUpdateFormComponent } from '../user-update-form/user-update-form.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DeleteConfirmDialogComponent } from '../delete-confirm-dialog/delete-confirm-dialog.component';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +19,6 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     public fetchApi: FetchApiDataService,
-    public router: Router,
     public dialog: MatDialog,
     public snackBar: MatSnackBar
   ) { }
@@ -26,7 +27,7 @@ export class ProfileComponent implements OnInit {
     this.loadUser();
   }
 
-  public loadUser(): void {
+  loadUser(): void {
     this.fetchApi.getOneUser().subscribe((userData: any) => {
       this.user = userData;
       this.user.favorite_movies = userData.FavoriteMovies || [];
@@ -37,34 +38,60 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  public deleteUser(): void {
-    // Call your API service method to delete the user
-    this.fetchApi.deleteUser().subscribe(() => {
-      // Assuming successful deletion, you can redirect or show a success message
-      this.router.navigate(['logout']); // Redirect to logout or another route
-    }, (error) => {
-      console.error('Error deleting user:', error);
-      // Handle error (show error message, etc.)
+  deleteUser(): void {
+    const dialogRef = this.dialog.open(DeleteConfirmDialogComponent, {
+      width: '400px',
+      data: { username: this.user.Username }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.fetchApi.deleteUser().subscribe(() => {
+          this.snackBar.open('User deleted successfully', 'OK', { duration: 2000 });
+          // Redirect or perform other actions as needed
+        }, (error) => {
+          console.error('Error deleting user:', error);
+          this.snackBar.open('Error deleting user', 'OK', { duration: 2000 });
+        });
+      }
     });
   }
 
-  public back(): void {
-    this.router.navigate(['movies']);
+  back(): void {
+    // Redirect to the movies page or perform other actions as needed
   }
 
-  public openUpdateUserForm(): void {
-    // Open the UserUpdateFormComponent in a dialog
+  openUpdateUserForm(): void {
     const dialogRef = this.dialog.open(UserUpdateFormComponent, {
       width: '400px',
-      data: this.user // Pass the user data to the dialog
+      data: this.user
     });
 
-    // Subscribe to the afterClosed event to handle any result from the dialog
     dialogRef.afterClosed().subscribe((result) => {
-      // Handle the result as needed, e.g., update the user data in the component
       if (result) {
         this.user = result;
       }
+    });
+  }
+
+  toggleFavorite(movieId: string): void {
+    const isCurrentlyFavorite = this.fetchApi.isFavoriteMovie(movieId);
+
+    if (isCurrentlyFavorite) {
+      this.fetchApi.deleteFavoriteMovie(movieId).subscribe(() => {
+        this.snackBar.open('Removed from favorites', 'OK', { duration: 2000, verticalPosition: 'top' });
+      });
+    } else {
+      this.fetchApi.addFavoriteMovies(movieId).subscribe(() => {
+        this.snackBar.open('Added to favorites', 'OK', { duration: 2000, verticalPosition: 'top' });
+      });
+    }
+  }
+
+  removeFromFavorites(movieId: string): void {
+    this.fetchApi.deleteFavoriteMovie(movieId).subscribe(() => {
+      this.favouriteMovies = this.favouriteMovies.filter((movie: any) => movie._id !== movieId);
+      this.snackBar.open('Removed from favorites', 'OK', { duration: 2000, verticalPosition: 'top' });
     });
   }
 }

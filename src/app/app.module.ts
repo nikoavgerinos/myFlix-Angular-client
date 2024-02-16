@@ -24,6 +24,7 @@ import { ProfileComponent } from './profile-page/profile-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { UserUpdateFormComponent } from './user-update-form/user-update-form.component';
+import { DeleteConfirmDialogComponent } from './delete-confirm-dialog/delete-confirm-dialog.component';
 
 
 const appRoutes: Routes = [
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     ProfileComponent,
     NavbarComponent,
     UserUpdateFormComponent,
+    DeleteConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,31 +1,52 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <h1 class="title">All movies</h1>
-  <div class="movie-container">
+  <div class="movie-card-container">
     <mat-card *ngFor="let movie of movies" class="movie-card">
-      <div class="movie-card-top">
-        <div class="movie-card-title">
-          <mat-card-title>{{ movie.Title }}</mat-card-title>
-        </div>
-        <mat-card-subtitle
+      <div class="img-container">
+        <img
+          mat-card-image
+          src="{{ movie.ImagePath }}"
+          alt="{{ movie.Title }}"
+        />
+        <mat-card-actions class="actions">
+          <!-- <button
+                    mat-button
+                    color="primary"
+                    (click)="openSynopsisDialog(movie.Description)"
+                >
+                    Synopsis
+                </button> -->
+          <!-- <button
+                    mat-button
+                    color="primary"
+                    (click)="openGenreDialog(movie.Genre.Name, movie.Genre.Description)"
+                >
+                    Genre
+                </button> -->
+          <!-- <button
+                    mat-button
+                    color="primary"
+                    (click)="openDirectorDialog(movie.Director.Name, movie.Director.Bio,movie.Director.Birth,movie.Director.Death)"
+                >
+                    Director
+                </button> -->
+          <mat-icon
+            class="fav-icon"
+            (click)="toggleFavorite(movie._id)"
+            [color]="isFavorite(movie._id) ? 'warn' : 'primary'"
+          >
+            {{ isFavorite(movie._id) ? "favorite" : "favorite_border" }}
+          </mat-icon>
+        </mat-card-actions>
+      </div>
+      <mat-card-header class="card-header">
+        <mat-card-title class="card-title"
+          >{{ movie.Title }} ({{ movie.Year }})</mat-card-title
+        >
+        <mat-card-subtitle class="card-subtitle"
           >Directed by: {{ movie.Director.Name }}</mat-card-subtitle
         >
-      </div>
-      <img
-        mat-card-image
-        [src]="movie.ImagePath"
-        alt="{{ movie.Title }}"
-        class="movie-card-image"
-      />
-      <mat-card-content>
-        <p>{{ movie.Synopsis }}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button color="primary">Genre</button>
-        <button mat-button color="primary">Director</button>
-        <button mat-button color="primary">Synopsis</button>
-        <mat-icon>favorite_border</mat-icon>
-      </mat-card-actions>
+      </mat-card-header>
     </mat-card>
   </div>
 </div>

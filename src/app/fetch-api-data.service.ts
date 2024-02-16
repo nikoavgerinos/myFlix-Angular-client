@@ -165,14 +165,24 @@ getOneUser(): Observable<any> {
   deleteUser(): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
-    return this.http.delete(apiUrl + 'users/' + user._id, {
-      headers: new HttpHeaders(
-      {
-        Authorization: 'Bearer ' + token,
-      })
-    }).pipe(
-      catchError(this.handleError)
-    );
+    console.log(token);
+  
+    // Ensure token exists before making the request
+    if (token) {
+      return this.http.delete(apiUrl + 'users/' + user.Username, {
+        headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer ' + token,
+        })
+      }).pipe(
+        map(this.extractResponseData),
+        catchError(this.handleError)
+      );
+    }
+  
+    // Handle the case when there's no token
+    // You could return an error or a default message here
+    return throwError(() => new Error('No token provided'));
   }
 
 // Delete a movie from the favorite movies endpoint

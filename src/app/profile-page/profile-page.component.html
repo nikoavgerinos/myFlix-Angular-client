@@ -1,8 +1,54 @@
-<mat-card-content>
-  Username: {{ user.Username }} <br />
-  Email: {{ user.Email }} <br />
-  Birthday: {{ user.Birthday | date : "mediumDate" }} <br />
+<!-- profile-page.component.html -->
 
-  <button mat-button color="warn" (click)="deleteUser()">Delete User</button>
-  <button mat-button (click)="openUpdateUserForm()">Update Profile</button>
-</mat-card-content>
+<app-navbar></app-navbar>
+
+<div class="container">
+  <h1 class="title">User Profile</h1>
+
+  <div class="profile-info">
+    <mat-card-content>
+      Username: {{ user.Username }} <br />
+      Email: {{ user.Email }} <br />
+      Birthday: {{ user.Birthday | date : "mediumDate" }} <br />
+      <div class="button-container">
+        <button
+          mat-raised-button
+          class="update-button"
+          (click)="openUpdateUserForm()"
+          color="primary"
+        >
+          Update
+        </button>
+        <button
+          mat-raised-button
+          class="delete-button"
+          color="warn"
+          (click)="deleteUser()"
+        >
+          Delete User
+        </button>
+      </div>
+    </mat-card-content>
+  </div>
+
+  <div class="favorite-movies">
+    <h2 class="subtitle">Favorite Movies</h2>
+
+    <div class="movie-container">
+      <mat-card *ngFor="let movie of favouriteMovies" class="movie-card">
+        <!-- Display favorite movies -->
+        <mat-card-title>{{ movie.Title }}</mat-card-title>
+        <mat-card-subtitle
+          >Directed by: {{ movie.Director.Name }}</mat-card-subtitle
+        >
+
+        <!-- Other details -->
+        <mat-card-actions>
+          <mat-icon (click)="removeFromFavorites(movie._id)" color="warn"
+            >delete</mat-icon
+          >
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

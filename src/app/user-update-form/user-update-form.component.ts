@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class UserUpdateFormComponent implements OnInit {
 
   updatedUser: any;
+  newPassword: string = ""; // Separate variable to hold the new password
 
   constructor(
     public dialogRef: MatDialogRef<UserUpdateFormComponent>,
@@ -25,18 +26,21 @@ export class UserUpdateFormComponent implements OnInit {
   }
 
   onUpdateUser(): void {
+    // Set the new password to the updatedUser object before calling the API
+    this.updatedUser.Password = this.newPassword;
+
     // Call your API service method to update the user
     this.fetchApiData.editUser(this.updatedUser).subscribe(
       (result) => {
         this.snackBar.open('User updated successfully', 'OK', {
-          duration: 2000
+          duration: 2000, verticalPosition: 'top'
         });
         this.dialogRef.close(this.updatedUser);
       },
       (error) => {
         console.error('Error updating user:', error);
         this.snackBar.open('Failed to update user', 'OK', {
-          duration: 2000
+          duration: 2000, verticalPosition: 'top'
         });
       }
     );
