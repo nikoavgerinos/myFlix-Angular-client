@@ -1,27 +1,57 @@
-# MyFlixAngularClient
+<p align="center">
+  <img src="img/myflix.png" width="800" alt="Image">
+</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.3.
+# 🍿 MyFlix Angular Client
 
-## Development server
+Welcome to the MyFlix Angular Client project! This repository hosts a single-page, responsive movie application built with Angular. The app allows users to browse through a collection of movies, view detailed information about each movie, and manage their user profiles.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 📝 Project Description
 
-## Code scaffolding
+MyFlix Angular Client aims to provide users with an intuitive interface for discovering and exploring movies. The application leverages Angular's powerful features to create a seamless browsing experience, enabling users to navigate through various movie categories, view detailed movie information, and interact with other users through comments and ratings.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## ✨ Features
 
-## Build
+- User authentication and registration forms.
+- Movie browsing by category and genre.
+- Detailed movie information including synopsis, director, and genre.
+- User profile management and update functionality.
+- Adding and removing movies from favorites.
+- User comments and ratings for movies.
+- Responsive design for optimal viewing across devices.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🛠️ Technical Requirements
 
-## Running unit tests
+- Developed in Angular framework (version 9 or later).
+- Utilization of Angular Material for UI components.
+- Implementation of user registration and login forms.
+- Integration with a backend API for movie data and user management.
+- Codebase contains comments using Typedoc.
+- Technical documentation using JSDoc.
+- Hosted on GitHub Pages.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🚀 Getting Started
 
-## Running end-to-end tests
+To run this project on your local machine, follow the steps below:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. **Clone this repository:** Clone this repository to your local machine.
 
-## Further help
+2. **Install dependencies:** Navigate to the project folder in your terminal and run:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
+npm install
+```
+
+3. **Start the development server:** Run the following command to start the development server:
+
+```
+ng serve --open
+```
+
+4. **Open in your browser:** The application should automatically open in your default web browser. If not, navigate to http://localhost:4200/.
+
+Now, you should have the project up and running on your local machine, ready for development and testing.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
