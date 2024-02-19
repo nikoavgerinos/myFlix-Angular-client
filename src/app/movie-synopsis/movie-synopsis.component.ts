@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 /**
- * @description Component representing the movie synopsis dialog.
+ * Component representing the movie synopsis dialog.
  * @selector 'app-movie-synopsis'
  * @templateUrl './movie-synopsis.component.html'
  * @styleUrls ['./movie-synopsis.component.scss']
@@ -15,15 +15,14 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class MovieSynopsisComponent implements OnInit {
 
   /**
-   * @constructor - Constructor for MovieSynopsisComponent. 
-   * @param data - Data containing movie discription.
+   * Constructor for MovieSynopsisComponent.
+   * @param data - Data containing movie description.
    */
   constructor(
     @Inject(MAT_DIALOG_DATA)
-
-  public data: {
-    Description: string
-  }
+    public data: {
+      Description: string
+    }
   ) {}
 
   ngOnInit(): void {

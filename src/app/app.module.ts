@@ -9,32 +9,30 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
-
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { ProfileComponent } from './profile-page/profile-page.component';
-
 import { NavbarComponent } from './navbar/navbar.component';
-import {MatMenuModule} from '@angular/material/menu';
 import { UserUpdateFormComponent } from './user-update-form/user-update-form.component';
 import { DeleteConfirmDialogComponent } from './delete-confirm-dialog/delete-confirm-dialog.component';
 import { GenreInfoComponent } from './genre-info/genre-info.component';
 import { DirectorInfoComponent } from './director-info/director-info.component';
 import { MovieSynopsisComponent } from './movie-synopsis/movie-synopsis.component';
 
-
+// Define your routes
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
   { path: 'profile', component: ProfileComponent},
-  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
 @NgModule({
@@ -59,8 +57,6 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatInputModule,
-    MatButtonModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,

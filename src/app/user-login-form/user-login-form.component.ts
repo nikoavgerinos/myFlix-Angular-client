@@ -4,6 +4,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+/**
+ * Component for user login form.
+ */
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
@@ -11,8 +14,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UserLoginFormComponent implements OnInit {
 
+  /** User data for login. */
   @Input() userData = { Username: '', Password: '' }
 
+  /**
+   * Constructs the UserLoginFormComponent.
+   * @param fetchApiData - Service for fetching API data.
+   * @param dialogRef - Reference to the MatDialogRef service.
+   * @param snackBar - Service for displaying snack bar messages.
+   * @param router - Router for navigating to different routes.
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
@@ -20,9 +31,15 @@ export class UserLoginFormComponent implements OnInit {
     private router: Router
   ) { }
 
+  /**
+   * Lifecycle hook that is called after data-bound properties are initialized.
+   */
   ngOnInit(): void {
   }
 
+  /**
+   * Logs in a user.
+   */
   public loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {
       console.log(result);
@@ -41,7 +58,10 @@ export class UserLoginFormComponent implements OnInit {
     });
   }
 
-  // Listen for the keyup event on the document
+  /**
+   * Listens for the keyup event on the document.
+   * @param event - The keyboard event.
+   */
   @HostListener('document:keyup', ['$event'])
   handleKeyUp(event: KeyboardEvent): void {
     // Check if the Enter key is pressed (keyCode 13)
