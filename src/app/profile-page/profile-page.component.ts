@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Inject } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GenreInfoComponent } from '../genre-info/genre-info.component';
@@ -34,7 +34,10 @@ export class ProfileComponent implements OnInit {
   constructor(public fetchApiData: FetchApiDataService,
     public router: Router,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private matDialog: MatDialog
+      
+
   ) { }
 
 
@@ -64,11 +67,11 @@ export class ProfileComponent implements OnInit {
   }
   
   openUpdateUserForm(): void {
-    const dialogRef = this.dialog.open(UserUpdateFormComponent, {
+    const dialogRef = this.matDialog.open(UserUpdateFormComponent, {
       width: '400px',
       data: this.user
     });
-
+  
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.user = result;

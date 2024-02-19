@@ -1,7 +1,7 @@
 // user-update-form.component.ts
 
 import { Component, Inject, OnInit, HostListener, ViewChild } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog,MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -21,7 +21,8 @@ export class UserUpdateFormComponent implements OnInit {
     public dialogRef: MatDialogRef<UserUpdateFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public fetchApiData: FetchApiDataService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private matDialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +34,7 @@ export class UserUpdateFormComponent implements OnInit {
     if (this.newPassword.trim() !== "") {
       this.updatedUser.Password = this.newPassword;
     } else {
-      // If no new password is entered, remove the Password property from updatedUser
+      // If no new password is entered, delete the Password property from updatedUser
       delete this.updatedUser.Password;
     }
   
