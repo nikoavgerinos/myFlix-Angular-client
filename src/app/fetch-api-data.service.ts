@@ -12,11 +12,11 @@ const apiUrl = 'https://movieapionrender.onrender.com/';
 })
 export class FetchApiDataService { 
 
-  // private userData = new BehaviorSubject<Object>({ Username: '', Password: '', Email: '', Birth: ''});
-  // currentUser = this.userData.asObservable();
+  private userData = new BehaviorSubject<Object>({ Username: '', Password: '', Email: '', Birth: ''});
+  currentUser = this.userData.asObservable();
 
-  // private movies = new BehaviorSubject<Object>({});
-  // moviesList = this.movies.asObservable();
+  private movies = new BehaviorSubject<Object>({});
+  moviesList = this.movies.asObservable();
 
   constructor(private http: HttpClient) {
   }
